@@ -3,10 +3,10 @@ F_CPU   = 12000000	# in Hz
 FUSE_L  = 0xdf # see below for fuse values for particular devices
 FUSE_H  = 0xdd
 AVRDUDE = avrdude -c avrispmkII -P usb -p $(DEVICE) # edit this line for your programmer
-OUT			= 1bitsynth
+OUT     = 1bitsynth
 
-SRC			= 1bitsynth.c
-CHSRC		= 
+SRC     = 1bitsynth.c
+CHSRC   = 
 
 COMPILE = avr-gcc -Wall -O3 -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)
 OBJECTS = $(SRC:.c=.o) $(CHSRC:.ch=.o)
