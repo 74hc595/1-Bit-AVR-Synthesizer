@@ -36,24 +36,24 @@
 #define LFO_LED_PIN 3
 #define PWR_LED_PIN 4
 
-#define MUXCTL			D
-#define	MUXCTL_PIN	5
+#define MUXCTL      D
+#define MUXCTL_PIN  5
 
-#define NUM_KNOBS					9
-#define NUM_ADC_SAMPLES		32
-#define NUM_ADC_CHANNELS	6
-#define MUXED_CH_LOW			3
-#define MUXED_CH_HIGH			5
+#define NUM_KNOBS         9
+#define NUM_ADC_SAMPLES   32
+#define NUM_ADC_CHANNELS  6
+#define MUXED_CH_LOW      3
+#define MUXED_CH_HIGH     5
 
-#define PITCH_KNOB				4
-#define LFO_FREQ_KNOB			6
-#define LFO_DEPTH_KNOB		1
-#define ENV_FREQ_KNOB			3
-#define ENV_WIDTH_KNOB		2
-#define AUDIO_WF_KNOB			7
-#define LFO_WF_KNOB				0
-#define EXT_KNOB_1				5
-#define EXT_KNOB_2				8
+#define PITCH_KNOB        4
+#define LFO_FREQ_KNOB     6
+#define LFO_DEPTH_KNOB    1
+#define ENV_FREQ_KNOB     3
+#define ENV_WIDTH_KNOB    2
+#define AUDIO_WF_KNOB     7
+#define LFO_WF_KNOB       0
+#define EXT_KNOB_1        5
+#define EXT_KNOB_2        8
 
 // 16-bit timer output compare values corresponding to MIDI note frequencies
 // Computed for 12MHz CPU and 1/8 prescaler
@@ -244,7 +244,7 @@ ISR(TIMER1_COMPA_vect)
   }
   else
   {
-  	shiftout = lfsr_rand() & 1;
+    shiftout = lfsr_rand() & 1;
   }
 
   // apply envelope
@@ -375,11 +375,11 @@ void update_synth_params()
   uint8_t newlfowavenum = knobs[LFO_WF_KNOB].val >> 7;
   if (newlfowavenum != lfowavenum)
   {
-		lfowavenum = newlfowavenum;
-		ledpulse = 1;
-	}
+    lfowavenum = newlfowavenum;
+    ledpulse = 1;
+  }
 
-	// pulse the power LED to indicate waveform changes
+  // pulse the power LED to indicate waveform changes
   if (ledpulse)
   {
     clear_bit(PORT(LEDS), PWR_LED_PIN);
@@ -403,7 +403,7 @@ int main(void)
   DDR(LEDS)  |= _BV(ENV_LED_PIN) | _BV(LFO_LED_PIN) | _BV(PWR_LED_PIN);
   DDR(MUXCTL) |= _BV(MUXCTL_PIN);
 
-	// turn on power LED
+  // turn on power LED
   set_bit(PORT(LEDS), PWR_LED_PIN);
 
   // set up main oscillator
@@ -429,13 +429,13 @@ int main(void)
   adctimer = 0;
   for (;;)
   {
-  	uint8_t adcchan = 0;
+    uint8_t adcchan = 0;
 
     adctimer++;
     adctimer &= (NUM_ADC_SAMPLES-1);
 
-		// select mux channel group 0
-		clear_bit(PORT(MUXCTL), MUXCTL_PIN);
+    // select mux channel group 0
+    clear_bit(PORT(MUXCTL), MUXCTL_PIN);
 
     // read ADC channels
     for (adcchan = 0; adcchan < NUM_ADC_CHANNELS; adcchan++)
