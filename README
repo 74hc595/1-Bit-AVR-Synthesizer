@@ -3,4 +3,41 @@ By Matt Sarnoff (msarnoff.org/1bitsynth)
 October 2009-October 2010
 ========================================
 
+This is an interesting little synthesizer/noisemaker that makes Atari-like
+sounds. All sounds are generated directly from an ATmega48 microcontroller,
+and have only 1 bit of amplitude; in other words, pulse waves and nothing else.
+
+For more info, photos, and videos, see
+http://www.msarnoff.org/1bitsynth
+or
+http://www.youtube.com/user/74hc595
+
+
+Compiling
+---------
+A Makefile for avr-gcc is included. Just type "make hex", then connect your
+ISP programmer to the ATmega48 and type "make fuse" and "make flash".
+
+
+Hacking
+-------
+The code in its original state is about 3k, leaving some room for additions.
+Additionally, things should work fine on an ATmega168 or ATmega328P if you
+need more space. 
+
+The MIDI note table is specially computed for a 12MHz clock frequency.
+If you change the crystal, you'll have to recompute this table.
+
+The circuit supports 9 analog inputs, but only 7 are used. Feel free to do
+whatever you like with the other two (as long as the signal is between 0 and
+5 volts).
+
+You might notice the "tiasnd.c" file is not used at all.
+This file contains an implementation of the actual waveforms used by the
+TIA chip in the Atari 2600. (basically, a 9-bit linear shift register connected
+in interesting ways.) I decided not to use it, since I wanted this synth to
+make its own sounds, rather than mimic the sounds of some other chip, but it
+shouldn't be too difficult to hook it back up if you like. The algorithms
+are adapted from the source code of the Stella emulator.
+(http://stella.sourceforge.net)
 
