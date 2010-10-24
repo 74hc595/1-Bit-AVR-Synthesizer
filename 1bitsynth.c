@@ -32,8 +32,8 @@
 #define AUDIO_PIN   0
 
 #define LEDS        B
-#define ENV_LED_PIN 2
-#define LFO_LED_PIN 3
+#define LFO_LED_PIN 2
+#define ENV_LED_PIN 3
 #define PWR_LED_PIN 4
 
 #define MUXCTL      D
@@ -46,10 +46,10 @@
 #define MUXED_CH_HIGH     5
 
 #define PITCH_KNOB        4
-#define LFO_FREQ_KNOB     6
-#define LFO_DEPTH_KNOB    1
-#define ENV_FREQ_KNOB     3
-#define ENV_WIDTH_KNOB    2
+#define LFO_FREQ_KNOB     3//6
+#define LFO_DEPTH_KNOB    2//1
+#define ENV_FREQ_KNOB     6//3
+#define ENV_WIDTH_KNOB    1//2
 #define AUDIO_WF_KNOB     7
 #define LFO_WF_KNOB       0
 #define EXT_KNOB_1        5
